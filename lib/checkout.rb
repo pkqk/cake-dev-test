@@ -65,6 +65,6 @@ class Checkout
       total + @prices[sku]
     end
     discounts = @promotional_rules.inject(0.0) { |discount, rule| discount + rule.discount(gross) }
-    gross - discounts
+    (gross - discounts).round(2)
   end
 end
