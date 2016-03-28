@@ -59,7 +59,7 @@ class Checkout
   def scan(sku)
     raise UnexpectedItemInTheBaggingArea unless @prices[sku]
     @items << sku
-    puts "\a"
+    STDOUT.print("\a"); STDOUT.flush
     @promotional_rules.each { |rule| rule.add(sku, @prices) }
   end
 
