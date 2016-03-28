@@ -1,7 +1,16 @@
 class UnexpectedItemInTheBaggingArea < ArgumentError
 end
 
-class PriceReductionRule
+class Promotion
+  def add(sku, prices)
+  end
+
+  def discount(total)
+    0.0
+  end
+end
+
+class PriceReductionRule < Promotion
   def initialize(sku, min, new_price)
     @sku = sku
     @count = 0
@@ -17,19 +26,12 @@ class PriceReductionRule
       end
     end
   end
-
-  def discount(total)
-    0.0
-  end
 end
 
-class MinSpendDiscount
+class MinSpendDiscount < Promotion
   def initialize(min, discount)
     @min = min
     @discount = discount
-  end
-
-  def add(sku, prices)
   end
 
   def discount(total)
