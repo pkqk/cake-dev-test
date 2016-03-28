@@ -23,6 +23,24 @@ class PriceReductionRule
   end
 end
 
+class MinSpendDiscount
+  def initialize(min, discount)
+    @min = min
+    @discount = discount
+  end
+
+  def add(sku, prices)
+  end
+
+  def discount(total)
+    if total >= @min
+      @discount * total
+    else
+      0.0
+    end
+  end
+end
+
 class Checkout
   PRODUCTS = {
     "001" => 9.25,

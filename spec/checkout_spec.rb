@@ -6,7 +6,10 @@ describe Checkout do
     [%w[001 003 001], 36.95],
     [%w[001 002 001 003], 73.76]
   ]
-  promotional_rules = [PriceReductionRule.new("001", 2, 8.50)]
+  promotional_rules = [
+    PriceReductionRule.new("001", 2, 8.50),
+    MinSpendDiscount.new(60, 0.1)
+  ]
 
   price_expectations.each do |skus, total|
     it "finds a total of £#{total} for products #{skus.join(', ')}" do
